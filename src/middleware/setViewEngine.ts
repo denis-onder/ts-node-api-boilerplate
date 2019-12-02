@@ -2,7 +2,7 @@ import express, { Application } from "express";
 import { join } from "path";
 import hbs from "express-handlebars";
 
-export default (app: Application) => {
+export default (app: Application): void => {
   app.use(express.static(join(__dirname, "../../public")));
   app.set("views", join(__dirname, "../../views"));
   app.engine(
