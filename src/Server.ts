@@ -1,10 +1,14 @@
-import express, { Application } from "express";
 import config from "./config";
+import express, { Application } from "express";
+import middleware from "./middleware";
 
 class Server {
   private app: Application = express();
   private port: number = config.server.port;
   private env: string = config.server.env;
+  constructor() {
+    middleware(this.app);
+  }
   public start(): void {
     this.app.listen(this.port, err =>
       err
