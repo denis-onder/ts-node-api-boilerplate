@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import ViewController from "./controllers/ViewController";
 
 class Router {
   /**
@@ -17,11 +18,10 @@ class Router {
   }
   private setViewEndpoints(): void {
     this.VIEW_ROUTER.get("/", (req: Request, res: Response): void =>
-      res.render("root", {
-        title: "Typescript Node API Boilerplate",
-        css: "root",
-        js: "root"
-      })
+      ViewController.renderRoot(req, res)
+    );
+    this.VIEW_ROUTER.get("/docs", (req: Request, res: Response): void =>
+      ViewController.renderDocs(req, res)
     );
   }
 }
