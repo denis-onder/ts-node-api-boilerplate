@@ -1,13 +1,16 @@
-import config from "./config";
+import { server } from "./config";
 import express, { Application } from "express";
 import middleware from "./middleware";
+import { connect } from "./db";
 
 class Server {
   private app: Application = express();
-  private port: number = config.server.port;
-  private env: string = config.server.env;
+  private port: number = server.port;
+  private env: string = server.env;
   constructor() {
     middleware(this.app);
+    // Establish a connection with the database.
+    connect.call(this);
   }
   public start(): void {
     this.app.listen(this.port, err =>
