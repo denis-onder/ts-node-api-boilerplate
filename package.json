@@ -6,7 +6,8 @@
   "scripts": {
     "compile": "tsc",
     "start": "npm run compile && node .",
-    "dev": "ts-node-dev src/bin/start.ts"
+    "dev": "ts-node-dev src/bin/start.ts",
+    "test": "npm run compile && mocha dist/tests/*.test.js"
   },
   "repository": {
     "type": "git",
