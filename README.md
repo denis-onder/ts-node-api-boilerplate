@@ -1,3 +1,3 @@
 # TypeScript Node API Boilerplate
 
-> Docs: [https://github.com/denis-onder/ts-node-api-boilerplate/DOCS.md](https://github.com/denis-onder/ts-node-api-boilerplate/DOCS.md)
+Click here to check out the [documentation](https://github.com/denis-onder/ts-node-api-boilerplate/blob/master/DOCS.md).
