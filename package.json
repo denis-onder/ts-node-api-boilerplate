@@ -4,9 +4,11 @@
   "description": "Node API boilerplate built with Typescript, Express and Postgres",
   "main": "dist/bin/start.js",
   "scripts": {
+    "scss": "node-sass public/scss -o public/css",
+    "scss:watch": "node-sass --watch public/scss -o public/css",
     "compile": "tsc",
-    "start": "npm run compile && node .",
-    "dev": "ts-node-dev src/bin/start.ts",
+    "start": "npm run scss && npm run compile && node .",
+    "dev": "npm run scss && ts-node-dev src/bin/start.ts",
     "test": "npm run compile && mocha dist/tests/*.test.js"
   },
   "repository": {
@@ -51,6 +53,7 @@
     "@types/showdown": "^1.9.3",
     "chai": "^4.2.0",
     "mocha": "^6.2.2",
+    "node-sass": "^4.13.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^5.20.1",
     "typescript": "^3.7.2"

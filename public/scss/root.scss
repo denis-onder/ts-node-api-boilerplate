@@ -1,0 +1,49 @@
+@import "./imports/_variables";
+
+body {
+  overflow: hidden;
+  background-color: #eee;
+  #root {
+    text-align: center;
+    p {
+      font-size: $paragraphFontSize;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+      transition: $transition;
+      border-bottom: 1px solid black;
+      &:hover {
+        color: $blue;
+        border-bottom-color: $blue;
+      }
+    }
+    #footer {
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      background-color: #333;
+      color: white;
+      font-size: $paragraphFontSize;
+      p {
+        margin-right: 10px;
+        a {
+          cursor: pointer;
+          color: white;
+          transition: $transition;
+          border-bottom: 1px solid white;
+          &:hover {
+            color: $blue;
+            border-bottom-color: $blue;
+          }
+        }
+      }
+    }
+  }
+}
