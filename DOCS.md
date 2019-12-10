@@ -8,6 +8,8 @@
 - `npm start` - Runs the compile script and starts the Node server.
 - `npm run dev` - Runs the Node server from the uncompiled source code.
 - `npm test` - Runs the test suite.
+- `npm run scss` - Compiles the SCSS code to CSS.
+- `npm run scss:watch` - Runs the SCSS compiler in watch mode.
 
 ---
 
@@ -38,3 +40,31 @@ DB_NAME=
 - `DB_NAME` - Database name
 
 ---
+
+### Structure:
+
+```
+|   .dockerignore
+│   .env
+|   .gitignore
+|   Dockerfile
+|   DOCS.md
+│   example.env
+|   package.json
+|   package-lock.json
+|   README.md
+|   tsconfig.json
+|   tslint.json
+|
+└───dist # This is where the compiled JavaScript code goes.
+|
+└───logs # Morgan logging system output folder
+│   
+└───node_modules
+│   
+└───public # Static assets
+|   └───js # JavaScript files
+|   └───scss # SCSS files
+|   |   └───imports # SCSS partials
+|   └───css # Location of all the compiled CSS. Not included in source control
+```
