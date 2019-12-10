@@ -7,7 +7,7 @@ class ViewController {
   private md = new showdown.Converter();
   public renderRoot(req: Request, res: Response): void {
     res.render("root", {
-      title: "Typescript Node API Boilerplate",
+      title: "TypeScript Node API Boilerplate",
       css: "root",
       js: "root"
     });
