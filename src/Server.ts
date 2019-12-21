@@ -10,7 +10,7 @@ class Server {
   constructor() {
     middleware(this.app);
     // Establish a connection with the database.
-    connect.call(this);
+    // connect.call(this);
   }
   public start(): void {
     this.app.listen(this.port, err =>

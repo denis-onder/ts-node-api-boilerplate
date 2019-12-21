@@ -1,6 +1,7 @@
 import { readFile } from "fs";
 import { join } from "path";
 import { Request, Response } from "express";
+import { server } from "../config";
 import showdown from "showdown";
 
 class ViewController {
@@ -9,7 +10,11 @@ class ViewController {
     res.render("root", {
       title: "TypeScript Node API Boilerplate",
       css: "root",
-      js: "root"
+      js: "root",
+      env: `${server.env[0].toUpperCase()}${server.env.substring(
+        1,
+        server.env.length
+      )}`
     });
   }
   public renderDocs(req: Request, res: Response): void {
