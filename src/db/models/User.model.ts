@@ -2,7 +2,11 @@ import { Schema } from "mongoose";
 import generator from "./model.generator";
 
 const schema = new Schema({
-  username: {
+  first_name: {
+    type: String,
+    required: true
+  },
+  last_name: {
     type: String,
     required: true
   },
@@ -18,22 +22,6 @@ const schema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  },
-  class: {
-    type: String,
-    required: true
-  },
-  realm: {
-    type: String,
-    required: true
-  },
-  region: {
-    type: String,
-    required: true
-  },
-  faction: {
-    type: String,
-    required: true
   }
 });
 

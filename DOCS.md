@@ -24,30 +24,29 @@ An example file has been provided within the repository.
 ```env
 PORT=
 NODE_ENV=
-DB_HOST=
-DB_PORT=
-DB_USERNAME=
-DB_PASSWORD=
-DB_NAME=
+DB_CONNECTION=
 ```
 
 - `PORT` - Server port
 - `NODE_ENV` - Node environment
-- `DB_HOST` - Database host
-- `DB_PORT` - Database port
-- `DB_USERNAME` - Database username
-- `DB_PASSWORD` - Database password
-- `DB_NAME` - Database name
+- `DB_CONNECTION` - Database connection URL
 
 ---
 
 ### Structure:
 
 ```
+.
 ├── dist
 ├── Dockerfile
 ├── DOCS.md
 ├── example.env
+├── scripts
+│   ├── build.sh
+│   └── start.sh
+├── scripts
+│   ├── build.sh
+│   └── start.sh
 ├── logs
 │   └── access.log
 ├── package.json
@@ -66,6 +65,9 @@ DB_NAME=
 │   ├── bin
 │   │   ├── start.ts
 │   │   └── stop.ts
+│   ├── auth
+│   │   ├── index.ts
+│   │   └── strategy.ts
 │   ├── config
 │   │   └── index.ts
 │   ├── controllers
@@ -73,7 +75,7 @@ DB_NAME=
 │   ├── db
 │   │   ├── index.ts
 │   │   └── models
-│   │       └── modelGenerator.ts
+│   │       └── model.generator.ts
 │   ├── middleware
 │   │   ├── index.ts
 │   │   ├── logger.ts
@@ -95,24 +97,26 @@ DB_NAME=
 ```
 
 ##### Directories:
+
 - `dist` - This is where all the compiled JavaScript goes. Generated upon running `npm start`.
 - `logs` - Location of the `access.log` file. Keeps track of all attempts to access the API.
 - `public` - Contains all the static assets, like JS files, CSS styles and what not.
 - `public/<js/scss>` - Respective subfolders for JS and SCSS files.
 - `public/constants` - Constant static files, such as the `reset.css` files should be stored here.
 - `views` - Your pages go here.
-- `views/layouts` - Layouts for the pages should be placed here. 
+- `views/layouts` - Layouts for the pages should be placed here.
 - `views/partials` - Partials location.
 - `src` - Source code for your app goes here.
 - `src/bin` - Contains the `start` and `stop` scripts.
 - `src/config` - All configuration files and similar things should be stored here.
 - `src/controllers` - Your controllers go here.
 - `src/db` - Database related things.
-- `src/db/models` - Sequelize models go here. A model generator has been provided in there.
+- `src/db/models` - Database models go here. A model generator has been provided in there.
 - `src/middleware` - Server and Express middleware files are stored here.
 - `src/tests` - Test suites are located here.
 
 ##### Files:
+
 - `.env` - Your environmental variables should be kept in this file.
 - `example.env` - Example file for creating your own `.env` file.
 - `tsconfig.json` - TypeScript compiler configuration file.
