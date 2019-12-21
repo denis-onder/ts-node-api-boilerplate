@@ -34,9 +34,9 @@
     "express-handlebars": "^3.1.0",
     "helmet": "^3.21.2",
     "morgan": "^1.9.1",
-    "pg": "^7.14.0",
+    "pg": "^7.15.1",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.2",
+    "sequelize": "^5.21.3",
     "showdown": "^1.9.1"
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "@types/helmet": "0.0.45",
     "@types/mocha": "^5.2.7",
     "@types/morgan": "^1.7.37",
-    "@types/node": "^12.12.17",
+    "@types/node": "^12.12.21",
     "@types/sequelize": "^4.28.8",
     "@types/showdown": "^1.9.3",
     "chai": "^4.2.0",
@@ -56,6 +56,6 @@
     "node-sass": "^4.13.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.4"
   }
 }

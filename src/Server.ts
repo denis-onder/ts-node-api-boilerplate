@@ -8,16 +8,17 @@ class Server {
   private port: number = server.port;
   private env: string = server.env;
   constructor() {
+    // Apply middleware
     middleware(this.app);
     // Establish a connection with the database.
-    // connect.call(this);
+    connect.call(this);
   }
   public start(): void {
     this.app.listen(this.port, err =>
       err
         ? this.stop(err)
         : console.log(
-            `Server running!\nhttp://localhost:${this.port}\nEnvironment: ${this.env}`
+            `Server running!\nhttp://localhost:${this.port}\nEnvironment: ${this.env}\n`
           )
     );
   }
