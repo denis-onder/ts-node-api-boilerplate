@@ -1,5 +1,7 @@
 import express, { Request, Response } from "express";
 import ViewController from "./controllers/View.controller";
+import AuthController from "./controllers/Auth.controller";
+import validateInput from "./middleware/validateInput";
 
 class Router {
   /**
@@ -15,8 +17,15 @@ class Router {
   }
   private setAPIEndpoints(): void {
     // Your API endpoints go here
+    this.API_ROUTER.post(
+      "/auth/register",
+      validateInput,
+      (req: Request, res: Response): Promise<Response> =>
+        AuthController.register(req, res)
+    );
   }
   private setViewEndpoints(): void {
+    // Your view endpoints can be declared here
     this.VIEW_ROUTER.get("/", (req: Request, res: Response): void =>
       ViewController.renderRoot(req, res)
     );
