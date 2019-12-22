@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import ViewController from "./controllers/ViewController";
+import ViewController from "./controllers/View.controller";
 
 class Router {
   /**
