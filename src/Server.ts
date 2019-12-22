@@ -22,7 +22,7 @@ class Server {
           )
     );
   }
-  public stop(err = false): void {
+  public stop(err: any = false): void {
     let code = 0;
     if (err) {
       code = 1;

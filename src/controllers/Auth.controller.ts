@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import User from "../db/models/User.model";
 import CustomException from "../helpers/CustomException";
+import hashPassword from "../helpers/hashPassword";
 
 class AuthController {
   public async register(req: Request, res: Response) {
@@ -13,7 +14,7 @@ class AuthController {
         first_name,
         last_name,
         email,
-        password
+        password: hashPassword(password)
       });
       await new_user.save();
       return res.status(200).json(new_user);

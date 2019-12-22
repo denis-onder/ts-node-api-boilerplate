@@ -4,7 +4,8 @@ import { db } from "../config";
 async function connect() {
   const config = {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
   };
   try {
     await mongoose.connect(db.connection, config);
