@@ -20,18 +20,14 @@ class Router {
     this.API_ROUTER.post(
       "/auth/register",
       validateInput,
-      (req: Request, res: Response): Promise<Response> =>
-        AuthController.register(req, res)
+      AuthController.register
     );
+    this.API_ROUTER.post("/auth/login", AuthController.login);
   }
   private setViewEndpoints(): void {
     // Your view endpoints can be declared here
-    this.VIEW_ROUTER.get("/", (req: Request, res: Response): void =>
-      ViewController.renderRoot(req, res)
-    );
-    this.VIEW_ROUTER.get("/docs", (req: Request, res: Response): void =>
-      ViewController.renderDocs(req, res)
-    );
+    this.VIEW_ROUTER.get("/", ViewController.renderRoot);
+    this.VIEW_ROUTER.get("/docs", ViewController.renderDocs);
   }
 }
 

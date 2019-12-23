@@ -42,44 +42,44 @@ describe("Example test", () => {
       token = res.data.token;
     });
   });
-  describe("Get current user", () => {
-    it("should return all non-sensitive user information", async () => {
-      const res = await apiTester("get", "/api/auth/me", null, token);
-      expect(res.data).to.include.all.keys(
-        "id",
-        "first_name",
-        "last_name",
-        "email",
-        "createdAt"
-      );
-    });
-  });
-  describe("Edit", () => {
-    it("should return the edited user's object", async () => {
-      const res = await apiTester(
-        "put",
-        "/api/auth/edit",
-        editedAccount,
-        token
-      );
-      expect(res.data).to.include.all.keys(
-        "_id",
-        "first_name",
-        "last_name",
-        "email",
-        "password",
-        "createdAt",
-        "__v"
-      );
-    });
-  });
-  describe("Delete", async () => {
-    // Get new token
-    const res = await apiTester("post", "/api/auth/login", editedAccount);
-    token = res.data.token;
-    it("should return an object with the deleted and timestamp props", async () => {
-      const res = await apiTester("delete", "/api/auth/delete", null, token);
-      expect(res.data).to.include.all.keys("deleted", "timestamp");
-    });
-  });
+  // describe("Get current user", () => {
+  //   it("should return all non-sensitive user information", async () => {
+  //     const res = await apiTester("get", "/api/auth/me", null, token);
+  //     expect(res.data).to.include.all.keys(
+  //       "id",
+  //       "first_name",
+  //       "last_name",
+  //       "email",
+  //       "createdAt"
+  //     );
+  //   });
+  // });
+  // describe("Edit", () => {
+  //   it("should return the edited user's object", async () => {
+  //     const res = await apiTester(
+  //       "put",
+  //       "/api/auth/edit",
+  //       editedAccount,
+  //       token
+  //     );
+  //     expect(res.data).to.include.all.keys(
+  //       "_id",
+  //       "first_name",
+  //       "last_name",
+  //       "email",
+  //       "password",
+  //       "createdAt",
+  //       "__v"
+  //     );
+  //   });
+  // });
+  // describe("Delete", async () => {
+  //   // Get new token
+  //   const res = await apiTester("post", "/api/auth/login", editedAccount);
+  //   token = res.data.token;
+  //   it("should return an object with the deleted and timestamp props", async () => {
+  //     const res = await apiTester("delete", "/api/auth/delete", null, token);
+  //     expect(res.data).to.include.all.keys("deleted", "timestamp");
+  //   });
+  // });
 });
