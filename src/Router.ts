@@ -1,4 +1,5 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import passport from "passport";
 import ViewController from "./controllers/View.controller";
 import AuthController from "./controllers/Auth.controller";
 import validateInput from "./middleware/validateInput";
@@ -23,6 +24,11 @@ class Router {
       AuthController.register
     );
     this.API_ROUTER.post("/auth/login", AuthController.login);
+    this.API_ROUTER.get(
+      "/auth/me",
+      passport.authenticate("jwt", { session: false }),
+      AuthController.getCurrentUser
+    );
   }
   private setViewEndpoints(): void {
     // Your view endpoints can be declared here

@@ -4,6 +4,7 @@ import { json, urlencoded } from "body-parser";
 import logger from "./logger";
 import setViewEngine from "./setViewEngine";
 import router from "./router";
+import authStrategy from "../auth";
 
 export default (app: Application): void => {
   app.use(helmet());
@@ -11,5 +12,6 @@ export default (app: Application): void => {
   app.use(urlencoded({ extended: true }));
   setViewEngine(app);
   logger(app);
+  authStrategy(app);
   router(app);
 };

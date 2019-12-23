@@ -42,18 +42,18 @@ describe("Example test", () => {
       token = res.data.token;
     });
   });
-  // describe("Get current user", () => {
-  //   it("should return all non-sensitive user information", async () => {
-  //     const res = await apiTester("get", "/api/auth/me", null, token);
-  //     expect(res.data).to.include.all.keys(
-  //       "id",
-  //       "first_name",
-  //       "last_name",
-  //       "email",
-  //       "createdAt"
-  //     );
-  //   });
-  // });
+  describe("Get current user", () => {
+    it("should return all non-sensitive user information", async () => {
+      const res = await apiTester("get", "/api/auth/me", null, token);
+      expect(res.data).to.include.all.keys(
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        "createdAt"
+      );
+    });
+  });
   // describe("Edit", () => {
   //   it("should return the edited user's object", async () => {
   //     const res = await apiTester(
