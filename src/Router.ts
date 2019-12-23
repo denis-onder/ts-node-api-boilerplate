@@ -23,11 +23,22 @@ class Router {
       validateInput,
       AuthController.register
     );
-    this.API_ROUTER.post("/auth/login", AuthController.login);
+    this.API_ROUTER.post("/auth/login", validateInput, AuthController.login);
     this.API_ROUTER.get(
       "/auth/me",
       passport.authenticate("jwt", { session: false }),
       AuthController.getCurrentUser
+    );
+    this.API_ROUTER.put(
+      "/auth/edit",
+      passport.authenticate("jwt", { session: false }),
+      validateInput,
+      AuthController.edit
+    );
+    this.API_ROUTER.delete(
+      "/auth/delete",
+      passport.authenticate("jwt", { session: false }),
+      AuthController.delete
     );
   }
   private setViewEndpoints(): void {

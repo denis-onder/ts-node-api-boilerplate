@@ -63,6 +63,29 @@ class AuthController {
       createdAt
     });
   }
+  public async edit(req: SuperRequest, res: Response) {
+    try {
+      const { id } = req.user;
+      const user: UserInterface = await User.findById(id);
+      if (!user) throw new CustomException(404, "User not found.");
+      const { first_name, last_name, email, password } = req.body;
+      // Edit user
+      user.first_name = first_name;
+      user.last_name = last_name;
+      user.email = email;
+      user.password = hashPassword(password);
+      // Save and return
+      await user.save();
+      return res.status(200).json(user);
+    } catch (err) {
+      return res.status(err.status || 500).json(err.message || err);
+    }
+  }
+  public async delete(req: SuperRequest, res: Response) {
+    const { id } = req.user;
+    await User.findByIdAndDelete(id);
+    return res.status(200).json({ deleted: true, timestamp: Date.now() });
+  }
 }
 
 export default new AuthController();

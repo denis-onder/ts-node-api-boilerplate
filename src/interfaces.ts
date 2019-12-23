@@ -1,12 +1,15 @@
 import { Request } from "express";
 import { Document } from "mongoose";
 
-export interface RegistrationValidationError {
-  firstNameEmpty?: String;
-  lastNameEmpty?: String;
+export interface LoginValidationError {
   emailEmpty?: String;
   emailNotValid?: String;
   passwordEmpty?: String;
+}
+
+export interface RegistrationValidationError extends LoginValidationError {
+  firstNameEmpty?: String;
+  lastNameEmpty?: String;
   confirmPasswordEmpty?: String;
   passwordLength?: String;
   passwordsNotMatching?: String;
