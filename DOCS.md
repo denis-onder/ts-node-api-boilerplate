@@ -1,4 +1,4 @@
-### Documentation:
+# Documentation:
 
 ---
 
@@ -96,7 +96,7 @@ DB_CONNECTION=
 
 ```
 
-##### Directories:
+### Directories:
 
 - `dist` - This is where all the compiled JavaScript goes. Generated upon running `npm start`.
 - `logs` - Location of the `access.log` file. Keeps track of all attempts to access the API.
@@ -115,7 +115,7 @@ DB_CONNECTION=
 - `src/middleware` - Server and Express middleware files are stored here.
 - `src/tests` - Test suites are located here.
 
-##### Files:
+### Files:
 
 - `.env` - Your environmental variables should be kept in this file.
 - `example.env` - Example file for creating your own `.env` file.

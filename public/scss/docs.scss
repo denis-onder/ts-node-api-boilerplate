@@ -1,0 +1,58 @@
+@import "./imports/_variables";
+
+#docs_nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  background-color: $black;
+  -webkit-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  &,
+  &_list {
+    display: flex;
+    flex-direction: column;
+  }
+  &_list {
+    list-style-type: none;
+    padding: 0 1em;
+    li {
+      margin: 10px 0;
+      a {
+        cursor: pointer;
+        color: white;
+        transition: $transition;
+        text-decoration-color: transparent;
+        &:hover {
+          color: $blue;
+          border-bottom-color: $blue;
+          text-decoration-color: $blue;
+        }
+      }
+    }
+  }
+}
+
+// Markdown generated HTML styles
+pre,
+code {
+  background-color: $black;
+  color: white;
+  font-weight: bold;
+}
+
+li {
+  margin: 5px 0;
+}
+
+li > code,
+p > code {
+  border-radius: 5px;
+  padding: 0.2em 0.5em;
+}
+
+pre {
+  border-radius: 7px;
+  padding: 1em 1.5em;
+}

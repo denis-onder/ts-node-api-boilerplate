@@ -4,8 +4,9 @@ import { Request, Response } from "express";
 import { server } from "../config";
 import showdown from "showdown";
 
+const md = new showdown.Converter();
+
 class ViewController {
-  private md = new showdown.Converter();
   public renderRoot(req: Request, res: Response): void {
     res.render("root", {
       title: "TypeScript Node API Boilerplate",
@@ -25,7 +26,12 @@ class ViewController {
             error:
               "An error has occured whilst trying to parse the Markdown file."
           })
-        : res.status(200).send(this.md.makeHtml(data));
+        : res.render("docs", {
+            title: "Documentation",
+            css: "docs",
+            js: "docs",
+            docs: md.makeHtml(data)
+          });
     });
   }
 }
