@@ -7,6 +7,5 @@ README.md
 Dockerfile
 .vscode
 .coverage
-.env
 .gitignore
 
