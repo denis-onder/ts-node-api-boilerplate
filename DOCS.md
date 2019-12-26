@@ -10,6 +10,8 @@
 - `npm test` - Runs the test suite.
 - `npm run scss` - Compiles the SCSS code to CSS.
 - `npm run scss:watch` - Runs the SCSS compiler in watch mode.
+- `scripts/build.sh` - Removes old and builds a new Docker image.
+- `scripts/start.sh` - Runs the Docker image.
 
 ---
 
@@ -106,7 +108,7 @@ DB_CONNECTION=
     └── root.hbs
 ```
 
-### Directories:
+##### Directories:
 
 - `dist` - This is where all the compiled JavaScript goes. Generated upon running `npm start`.
 - `logs` - Location of the `access.log` file. Keeps track of all attempts to access the API. This is generated once the server starts processing requests.
@@ -125,8 +127,12 @@ DB_CONNECTION=
 - `src/db/models` - Database models go here. A model generator has been provided in there.
 - `src/middleware` - Server and Express middleware files are stored here.
 - `src/tests` - Test suites are located here.
+- `src/auth` - Authorization system files. Contains a Passport strategy incorporating JSON Web Tokens for authorization.
+- `src/validation` - Input validation related code goes here.
+- `src/helpers` - Helper functions for keeping the codebase as DRY as possible.
+- `src/utils` - Utilitarian functions go here. They might not be entirely necessary for the app to work.
 
-### Files:
+##### Files:
 
 - `.env` - Your environmental variables should be kept in this file.
 - `example.env` - Example file for creating your own `.env` file.
@@ -135,5 +141,80 @@ DB_CONNECTION=
 - `src/Server.ts` - Server class.
 - `src/Router.ts` - Router.
 - `src/interfaces.ts` - Wrapper file for custom interfaces.
+
+---
+
+### Requests:
+
+This boilerplate only provides a handful of requests, of which two are handling static file rendering, and five are there for doing work with users.
+
+The logic behind each requests lays in the controllers and routers.
+
+`src/Router.ts`
+
+```js
+import express from "express";
+import passport from "passport";
+import ViewController from "./controllers/View.controller";
+import AuthController from "./controllers/Auth.controller";
+import validateInput from "./middleware/validateInput";
+
+class Router {
+  public API_ROUTER = express.Router();
+  public VIEW_ROUTER = express.Router();
+  constructor() {
+    this.setAPIEndpoints();
+    this.setViewEndpoints();
+  }
+  private setAPIEndpoints(): void {
+    // Your API endpoints go here
+    this.API_ROUTER.post(
+      "/auth/register",
+      validateInput,
+      AuthController.register
+    );
+    this.API_ROUTER.post("/auth/login", validateInput, AuthController.login);
+    this.API_ROUTER.get(
+      "/auth/me",
+      passport.authenticate("jwt", { session: false }),
+      AuthController.getCurrentUser
+    );
+    this.API_ROUTER.put(
+      "/auth/edit",
+      passport.authenticate("jwt", { session: false }),
+      validateInput,
+      AuthController.edit
+    );
+    this.API_ROUTER.delete(
+      "/auth/delete",
+      passport.authenticate("jwt", { session: false }),
+      AuthController.delete
+    );
+  }
+  private setViewEndpoints(): void {
+    // Your view endpoints can be declared here
+    this.VIEW_ROUTER.get("/", ViewController.renderRoot);
+    this.VIEW_ROUTER.get("/docs", ViewController.renderDocs);
+  }
+}
+```
+
+As you can see, we are declaring, and using two separate routers. The reason behind this is to separate the two types of logic we have present in this instance.
+
+This can be tailored to whatever your needs are, depending on if you decide to choose this templating engine or not.
+
+Not to mention, adding additional routers can help with API versioning. It is simple to just add it to the configuration, as shown below.
+
+`src/middleware/router.ts`
+
+```js
+import { Application } from "express";
+import { API_ROUTER, VIEW_ROUTER } from "../Router";
+
+export default (app: Application): void => {
+  app.use("/api", API_ROUTER);
+  app.use("/", VIEW_ROUTER);
+};
+```
 
 ---

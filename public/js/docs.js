@@ -6,16 +6,15 @@ function checkForTabEntities(elem) {
     elem.innerHTML = elem.innerText.split(query).join("  ");
 }
 
-function addLinkToNavbar({ id, innerText: text }) {
-  navbar.innerHTML += `<li><a href="#${id}"> > ${text.replace(
-    ":",
-    ""
-  )}</a></li>`;
+function addLinkToNavbar({ id, innerText: text, tagName }) {
+  navbar.innerHTML += `<li><a href="#${id}"> ${
+    tagName === "H5" ? ">" : ""
+  } ${text.replace(":", "")}</a></li>`;
 }
 
 window.onload = () => {
   Array.from(document.getElementsByTagName("code")).forEach(
     checkForTabEntities
   );
-  Array.from(document.getElementsByTagName("h3")).forEach(addLinkToNavbar);
+  Array.from(document.querySelectorAll("h3,h5")).forEach(addLinkToNavbar);
 };

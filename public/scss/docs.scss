@@ -1,6 +1,9 @@
 @import "./imports/_variables";
 body {
   font-family: $fonts;
+  #docs {
+    width: 50%;
+  }
   #docs_nav {
     position: fixed;
     left: 0;
@@ -38,9 +41,21 @@ body {
 
   // Markdown generated HTML styles
   h1,
-  h3 {
-    font-size: 36px;
+  h3,
+  h5 {
     margin: 25px 0;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 34px;
+  }
+
+  h5 {
+    font-size: 32px;
   }
 
   p {
