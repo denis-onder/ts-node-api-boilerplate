@@ -37,72 +37,83 @@ DB_CONNECTION=
 
 ```
 .
-├── dist
 ├── Dockerfile
-├── DOCS.md
 ├── example.env
-├── scripts
-│   ├── build.sh
-│   └── start.sh
-├── scripts
-│   ├── build.sh
-│   └── start.sh
+├── .env
 ├── logs
-│   └── access.log
-├── package.json
-├── package-lock.json
 ├── public
 │   ├── constants
 │   │   └── reset.css
 │   ├── js
+│   │   ├── docs.js
 │   │   └── root.js
 │   └── scss
+│       ├── docs.scss
 │       ├── imports
 │       │   └── __variables.scss
 │       └── root.scss
-├── README.md
+├── scripts
+│   ├── build.sh
+│   └── start.sh
 ├── src
-│   ├── bin
-│   │   ├── start.ts
-│   │   └── stop.ts
+│   ├── Router.ts
+│   ├── Server.ts
 │   ├── auth
 │   │   ├── index.ts
 │   │   └── strategy.ts
+│   ├── bin
+│   │   ├── start.ts
+│   │   └── stop.ts
 │   ├── config
 │   │   └── index.ts
 │   ├── controllers
-│   │   └── ViewController.ts
+│   │   ├── Auth.controller.ts
+│   │   └── View.controller.ts
 │   ├── db
 │   │   ├── index.ts
 │   │   └── models
+│   │       ├── User.model.ts
 │   │       └── model.generator.ts
+│   ├── helpers
+│   │   ├── CustomException.ts
+│   │   ├── generateToken.ts
+│   │   ├── hashPassword.ts
+│   │   └── isEmpty.ts
+│   ├── interfaces.ts
 │   ├── middleware
 │   │   ├── index.ts
 │   │   ├── logger.ts
 │   │   ├── router.ts
-│   │   └── setViewEngine.ts
-│   ├── Router.ts
-│   ├── Server.ts
-│   └── tests
-│       └── test.test.ts
+│   │   ├── setViewEngine.ts
+│   │   └── validateInput.ts
+│   ├── tests
+│   ├── utils
+│   │   └── apiTester.ts
+│   └── validation
+│       ├── emailRegex.ts
+│       ├── errors.ts
+│       ├── index.ts
+│       ├── login.validation.ts
+│       └── register.validation.ts
 ├── tsconfig.json
 ├── tslint.json
 └── views
+    ├── docs.hbs
     ├── layouts
     │   └── default.hbs
     ├── partials
     │   └── footer.hbs
     └── root.hbs
-
 ```
 
 ### Directories:
 
 - `dist` - This is where all the compiled JavaScript goes. Generated upon running `npm start`.
-- `logs` - Location of the `access.log` file. Keeps track of all attempts to access the API.
+- `logs` - Location of the `access.log` file. Keeps track of all attempts to access the API. This is generated once the server starts processing requests.
 - `public` - Contains all the static assets, like JS files, CSS styles and what not.
 - `public/<js/scss>` - Respective subfolders for JS and SCSS files.
 - `public/constants` - Constant static files, such as the `reset.css` files should be stored here.
+- `scripts` - Contains the shell scripts for building and running the app with Docker.
 - `views` - Your pages go here.
 - `views/layouts` - Layouts for the pages should be placed here.
 - `views/partials` - Partials location.
@@ -123,5 +134,6 @@ DB_CONNECTION=
 - `tslint.json` - TypeScript linter configuration file.
 - `src/Server.ts` - Server class.
 - `src/Router.ts` - Router.
+- `src/interfaces.ts` - Wrapper file for custom interfaces.
 
 ---

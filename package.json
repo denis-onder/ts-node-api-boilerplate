@@ -1,7 +1,7 @@
 {
   "name": "ts-node-boilerplate",
   "version": "1.0.0",
-  "description": "Node API boilerplate built with TypeScript, Express and Postgres",
+  "description": "Node API boilerplate built with TypeScript, Express and MongoDB",
   "main": "dist/bin/start.js",
   "scripts": {
     "scss": "node-sass public/scss -o public/css",
@@ -19,7 +19,7 @@
     "Node",
     "Express",
     "TypeScript",
-    "Postgres"
+    "MongoDB"
   ],
   "author": "Denis Onder",
   "license": "ISC",
@@ -36,7 +36,7 @@
     "express-handlebars": "^3.1.0",
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.8.2",
+    "mongoose": "^5.8.3",
     "morgan": "^1.9.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
@@ -55,9 +55,9 @@
     "@types/helmet": "0.0.45",
     "@types/jsonwebtoken": "^8.3.5",
     "@types/mocha": "^5.2.7",
-    "@types/mongoose": "^5.5.34",
+    "@types/mongoose": "^5.5.35",
     "@types/morgan": "^1.7.37",
-    "@types/node": "^12.12.21",
+    "@types/node": "^12.12.22",
     "@types/passport": "^1.0.2",
     "@types/passport-jwt": "^3.0.3",
     "@types/showdown": "^1.9.3",
