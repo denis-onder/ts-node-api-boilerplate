@@ -37,6 +37,23 @@ body {
   }
 
   // Markdown generated HTML styles
+  h1,
+  h3 {
+    font-size: 36px;
+    margin: 25px 0;
+  }
+
+  p {
+    font-size: 18px;
+    & > code {
+      font-size: 14px;
+    }
+  }
+
+  hr {
+    margin: 50px 0;
+  }
+
   pre,
   code {
     background-color: $black;
@@ -44,8 +61,12 @@ body {
     font-weight: bold;
   }
 
-  li {
-    margin: 5px 0;
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+    li {
+      margin: 10px 0;
+    }
   }
 
   li > code,
