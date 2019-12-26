@@ -236,4 +236,44 @@ export default (app: Application): void => {
 };
 ```
 
+##### Authentication:
+
+There are 5 requests available from the authentication controller:
+
+1. Register
+2. Login
+3. Get Current User
+4. Edit User
+5. Delete
+
+##### Register:
+
+`POST /api/auth/register`
+
+`Example JSON request body`
+
+```json
+{
+  "first_name": "Test",
+  "last_name":  "Account",
+  "email":  "test_account@example.com",
+  "password": "test1234",
+  "confirm_password": "test1234",
+}
+```
+
+`Example response`
+
+```json
+{
+    "_id": "5e0428b26505de2a0a488d61",
+    "first_name": "Test",
+    "last_name": "Account",
+    "email": "test_account@example.com",
+    "password": "$2b$14$QV3ASTCubM2Mcj4yqAlI7O8JDHsWPV9i8GYXLIeUUlsk0IcB4IPuS",
+    "createdAt": "2020-01-01T00:00:00.078Z",
+    "__v": 0
+}
+```
+
 ---
