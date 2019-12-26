@@ -165,6 +165,8 @@ DB_CONNECTION=
 
 ### Requests:
 
+[Postman Collection](https://www.getpostman.com/collections/ca5c894df425fdc08302)
+
 This boilerplate only provides a handful of requests, of which two are handling static file rendering, and five are there for doing work with users.
 
 The logic behind each requests lays in the controllers and routers.
