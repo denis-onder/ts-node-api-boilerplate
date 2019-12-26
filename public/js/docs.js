@@ -7,9 +7,12 @@ function checkForTabEntities(elem) {
 }
 
 function addLinkToNavbar({ id, innerText: text, tagName }) {
-  navbar.innerHTML += `<li><a href="#${id}"> ${
-    tagName === "H5" ? ">" : ""
-  } ${text.replace(":", "")}</a></li>`;
+  navbar.innerHTML += `<li ${
+    tagName === "H5" ? `style="margin: 0"` : false
+  }><a href="#${id}"> ${tagName === "H5" ? ">" : ""} ${text.replace(
+    ":",
+    ""
+  )}</a></li>`;
 }
 
 window.onload = () => {

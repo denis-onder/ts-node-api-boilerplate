@@ -13,6 +13,9 @@ body {
     }
     p {
       font-size: $paragraphFontSize;
+      & > span {
+        font-weight: bold;
+      }
     }
     a {
       text-decoration: none;

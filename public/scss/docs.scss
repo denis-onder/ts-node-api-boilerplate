@@ -22,7 +22,7 @@ body {
       list-style-type: none;
       padding: 0 1em;
       li {
-        margin: 10px 0;
+        margin-top: 25px;
         a {
           cursor: pointer;
           color: white;
@@ -79,9 +79,6 @@ body {
   ul {
     padding-left: 0;
     list-style-type: none;
-    li {
-      margin: 10px 0;
-    }
   }
 
   li > code,
