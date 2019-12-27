@@ -29,7 +29,9 @@ body {
           transition: $transition;
           text-decoration-color: transparent;
           font-size: 20px;
-          &:hover {
+          &:hover,
+          &:focus {
+            outline: none;
             color: $blue;
             border-bottom-color: $blue;
             text-decoration-color: $blue;
