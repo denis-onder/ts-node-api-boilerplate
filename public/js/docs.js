@@ -66,8 +66,32 @@ function vimNavigation({ keyCode: key }) {
   }
 }
 
+// Show and hide info tag
+function revealAndCloseInfo() {
+  const info = document.getElementById("info");
+  // Revealing function
+  function reveal() {
+    info.classList.remove("reveal");
+    info.style.opacity = "1";
+    info.classList.add("reveal");
+    setTimeout(close, 2000);
+  }
+  // Closing function
+  function close() {
+    info.style.opacity = "0";
+  }
+  // Code goes here
+  reveal();
+  // Attach listeners
+  window.addEventListener("keydown", ({ keyCode: key }) => {
+    if (key === 74 || key === 75) close(); // If navigation keys are pressed, close the hint box
+    if (key === 191) reveal(); // If the slash key's been pressed, reveal the hint box
+  });
+}
+
 window.onload = () => {
   this.addEventListener("keydown", vimNavigation);
   codeBlocks.forEach(checkForTabEntities);
   headers.forEach(addLinkToNavbar);
+  revealAndCloseInfo();
 };

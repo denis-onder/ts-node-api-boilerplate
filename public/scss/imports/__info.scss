@@ -1,4 +1,6 @@
 #info {
+  transform: translateX(200%);
+  transition: $transition;
   position: fixed;
   bottom: 25px;
   right: 25px;
@@ -18,5 +20,20 @@
     text-align: center;
     border-radius: 3px;
     font-weight: bold;
+  }
+}
+
+.reveal {
+  opacity: 1;
+  animation: revealInfo 0.3s;
+  animation-fill-mode: both;
+}
+
+@keyframes revealInfo {
+  0% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
