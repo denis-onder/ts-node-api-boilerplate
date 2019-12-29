@@ -7,10 +7,13 @@
     "scss": "node-sass public/scss -o public/css",
     "scss:watch": "node-sass --watch public/scss -o public/css",
     "compile": "tsc",
-    "start": "npm run scss && npm run compile && node .",
+    "prestart": "npm run scss && npm run compile",
+    "start": "node .",
+    "start:process": "pm2 start .",
     "dev": "npm run scss && ts-node-dev src/bin/start.ts",
-    "test": "npm run compile && mocha dist/tests/*.test.js",
-    "start:process": "pm2 start ."
+    "pretest": "npm run start:process",
+    "posttest": "pm2 del 0",
+    "test": "npm run compile && mocha dist/tests/*.test.js"
   },
   "repository": {
     "type": "git",
