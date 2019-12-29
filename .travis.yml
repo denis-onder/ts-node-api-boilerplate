@@ -1,3 +1,7 @@
 language: node_js
 node_js:
   - 13.5.0
+before_script:
+  - npm start
+script:
+  - npm test
