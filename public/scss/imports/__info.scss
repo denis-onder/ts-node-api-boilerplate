@@ -1,0 +1,24 @@
+@import "_variables";
+
+#info {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: $black;
+  color: white;
+  padding: 1em;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  div {
+    display: inline-block;
+    background-color: #fff;
+    width: 22px;
+    height: 22px;
+    color: $black;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+}
