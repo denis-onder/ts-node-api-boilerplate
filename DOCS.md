@@ -15,9 +15,9 @@ It's written to be used with [TypeScript](https://www.typescriptlang.org/) and [
 ##### Usage
 
 1. Clone this repository to your project directory.
-2. Run `npm install`.
+2. Run `npm install`
 3. Create your `.env` file based on the provided `example.env` file.
-4. Run `npm start`.
+4. Run `npm start`
 
 ---
 
@@ -129,7 +129,7 @@ DB_CONNECTION=
 
 ##### Directories
 
-- `dist` - This is where all the compiled JavaScript goes. Generated upon running `npm start`.
+- `dist` - This is where all the compiled JavaScript goes. Generated upon running `npm start`
 - `logs` - Location of the `access.log` file. Keeps track of all attempts to access the API. This is generated once the server starts processing requests.
 - `public` - Contains all the static assets, like JS files, CSS styles and what not.
 - `public/<js/scss>` - Respective subfolders for JS and SCSS files.
