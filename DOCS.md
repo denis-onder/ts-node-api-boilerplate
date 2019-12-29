@@ -10,7 +10,7 @@ This boilerplate has been made to speed up the early stage of the development pr
 
 Design pattern wise, this boilerplate had MVC in mind.
 
-It's written to be used with TypeScript and Express. The database solution used here is MongoDB, which uses Mongoose as it's layer of communication. This can, however, easily be changed.
+It's written to be used with [TypeScript](https://www.typescriptlang.org/) and [Express](https://expressjs.com/). The database solution used here is [MongoDB](https://www.mongodb.com/), which uses [Mongoose](https://mongoosejs.com/) as it's layer of communication. This can, however, easily be changed.
 
 ##### Usage:
 
@@ -163,6 +163,15 @@ DB_CONNECTION=
 
 ---
 
+### Authentication Strategy:
+
+This boilerplate utilizes [Passport.js](http://www.passportjs.org/) for authentication.
+Once a user logs in, a bearer token will be returned to him, which is to be used for accessing protected endpoints.
+
+The token is set to expire in an hour after logging in.
+
+---
+
 ### Requests:
 
 [Postman Collection](https://www.getpostman.com/collections/ca5c894df425fdc08302)
@@ -238,7 +247,7 @@ export default (app: Application): void => {
 };
 ```
 
-##### Authentication:
+##### Authentication Controller:
 
 There are 5 requests available from the authentication controller:
 
@@ -380,5 +389,14 @@ There are 5 requests available from the authentication controller:
   "timestamp": 1577582955245
 }
 ```
+
+---
+
+### Testing:
+
+A test suite has been provided which runs a set of unit tests, checking the Authentication controller.
+Additional tests can be added in the `src/tests` directory.
+
+This boilerplate utilizes [Mocha and Chai](https://mochajs.org/) for it's test suite.
 
 ---
