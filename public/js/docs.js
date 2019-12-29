@@ -69,6 +69,7 @@ function vimNavigation({ keyCode: key }) {
 // Show and hide info tag
 function revealAndCloseInfo() {
   const info = document.getElementById("info");
+  const reminder = document.getElementById("info_reminder_caller");
   // Revealing function
   function reveal() {
     // Remove the class, set the opacity back to default and then reveal the box by adding the 'reveal' class
@@ -90,6 +91,8 @@ function revealAndCloseInfo() {
   });
   // Close the hint box once the user scrolls
   window.addEventListener("scroll", close);
+  // Reveal hint box on reminder click
+  reminder.addEventListener("click", reveal);
 }
 
 window.onload = () => {

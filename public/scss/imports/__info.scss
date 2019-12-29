@@ -23,6 +23,35 @@
   }
 }
 
+#info_reminder {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: transparent;
+  color: $gray;
+  font-size: 18px;
+  text-align: right;
+  div {
+    display: inline-block;
+    background-color: $gray;
+    width: 22px;
+    height: 22px;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+  span {
+    cursor: pointer;
+    transition: $transition;
+    border-bottom: 1px solid transparent;
+    &:hover {
+      color: $blue;
+      border-bottom-color: $blue;
+    }
+  }
+}
+
 .reveal {
   opacity: 1;
   animation: revealInfo 0.3s;
