@@ -58,27 +58,32 @@ DB_CONNECTION=
 
 ```
 .
-├── Dockerfile
-├── example.env
 ├── .env
+├── Dockerfile
+├── DOCS.md
+├── example.env
+├── package.json
+├── package-lock.json
 ├── logs
 ├── public
 │   ├── constants
 │   │   └── reset.css
+│   ├── css
 │   ├── js
 │   │   ├── docs.js
 │   │   └── root.js
 │   └── scss
 │       ├── docs.scss
 │       ├── imports
+│       │   ├── __info.scss
+│       │   ├── __markdown.scss
 │       │   └── __variables.scss
 │       └── root.scss
+├── README.md
 ├── scripts
 │   ├── build.sh
 │   └── start.sh
 ├── src
-│   ├── Router.ts
-│   ├── Server.ts
 │   ├── auth
 │   │   ├── index.ts
 │   │   └── strategy.ts
@@ -93,8 +98,8 @@ DB_CONNECTION=
 │   ├── db
 │   │   ├── index.ts
 │   │   └── models
-│   │       ├── User.model.ts
-│   │       └── model.generator.ts
+│   │       ├── model.generator.ts
+│   │       └── User.model.ts
 │   ├── helpers
 │   │   ├── CustomException.ts
 │   │   ├── generateToken.ts
@@ -107,7 +112,11 @@ DB_CONNECTION=
 │   │   ├── router.ts
 │   │   ├── setViewEngine.ts
 │   │   └── validateInput.ts
+│   ├── Router.ts
+│   ├── Server.ts
 │   ├── tests
+│   │   ├── Auth.test.ts
+│   │   └── test.test.ts
 │   ├── utils
 │   │   └── apiTester.ts
 │   └── validation
@@ -123,8 +132,11 @@ DB_CONNECTION=
     ├── layouts
     │   └── default.hbs
     ├── partials
-    │   └── footer.hbs
+    │   ├── footer.hbs
+    │   ├── info.hbs
+    │   └── nav.hbs
     └── root.hbs
+
 ```
 
 ##### Directories
