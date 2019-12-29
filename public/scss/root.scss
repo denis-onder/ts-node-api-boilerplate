@@ -12,7 +12,7 @@ body {
       margin: 8px;
     }
     p {
-      font-size: $paragraphFontSize;
+      font-size: 22px;
       & > span {
         font-weight: bold;
       }
@@ -24,8 +24,8 @@ body {
       transition: $transition;
       border-bottom: 1px solid black;
       &:hover {
-        color: $blue;
-        border-bottom-color: $blue;
+        color: $darkBlue;
+        border-bottom-color: $darkBlue;
       }
     }
     #footer {
@@ -39,7 +39,7 @@ body {
       justify-content: center;
       background-color: $black;
       color: white;
-      font-size: $paragraphFontSize;
+      font-size: 22px;
       -webkit-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
       -moz-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
       box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);

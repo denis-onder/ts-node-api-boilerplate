@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 
-$paragraphFontSize: 22px;
 $blue: rgb(80, 200, 255);
+$darkBlue: darken($blue, 20%);
 $transition: all ease-in-out 0.2s;
 $black: #333;
 $fonts: "Nunito", Arial, Helvetica, sans-serif;

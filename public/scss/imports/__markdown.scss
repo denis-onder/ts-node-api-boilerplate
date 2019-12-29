@@ -10,17 +10,19 @@ h1 {
 }
 
 h3 {
-  font-size: 34px;
-}
-
-h5 {
   font-size: 32px;
 }
 
+h5 {
+  font-size: 28px;
+}
+
 p {
-  font-size: 18px;
-  & > code {
-    font-size: 14px;
+  font-size: 20px;
+  & > a {
+    color: $darkBlue;
+    text-decoration: none;
+    border-bottom: 1px solid $darkBlue;
   }
 }
 
@@ -33,6 +35,7 @@ code {
   background-color: $black;
   color: white;
   font-weight: bold;
+  font-size: 14px;
 }
 
 ul,
@@ -50,4 +53,21 @@ p > code {
 pre {
   border-radius: 7px;
   padding: 1em 1.5em;
+}
+
+ol > li > a {
+  color: $darkBlue;
+  text-decoration: none;
+  border-bottom: 1px solid $darkBlue;
+}
+
+p > code,
+li > code {
+  font-size: 16px;
+}
+
+ol > li,
+ul > li {
+  margin-bottom: 10px;
+  font-size: 18px;
 }

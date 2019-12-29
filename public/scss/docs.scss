@@ -33,17 +33,17 @@ body {
         li {
           margin: none;
           a {
+            text-decoration: none;
             cursor: pointer;
             color: white;
             transition: $transition;
-            text-decoration-color: transparent;
             font-size: 20px;
+            border-bottom: 1px solid transparent;
             &:hover,
             &:focus {
               outline: none;
               color: $blue;
               border-bottom-color: $blue;
-              text-decoration-color: $blue;
             }
           }
         }
