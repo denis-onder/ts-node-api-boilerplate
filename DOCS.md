@@ -242,11 +242,11 @@ export default (app: Application): void => {
 
 There are 5 requests available from the authentication controller:
 
-1. Register
-2. Login
-3. Get Current User
-4. Edit User
-5. Delete
+1. [Register](#register)
+2. [Login](#login)
+3. [Get Current User](#getcurrentuser)
+4. [Edit Account](#editaccount)
+5. [Delete Account](#deleteaccount)
 
 ##### Register:
 
@@ -257,10 +257,10 @@ There are 5 requests available from the authentication controller:
 ```json
 {
   "first_name": "Test",
-  "last_name":  "Account",
-  "email":  "test_account@example.com",
+  "last_name": "Account",
+  "email": "test_account@example.com",
   "password": "test1234",
-  "confirm_password": "test1234",
+  "confirm_password": "test1234"
 }
 ```
 
@@ -268,13 +268,116 @@ There are 5 requests available from the authentication controller:
 
 ```json
 {
-    "_id": "5e0428b26505de2a0a488d61",
-    "first_name": "Test",
-    "last_name": "Account",
-    "email": "test_account@example.com",
-    "password": "$2b$14$QV3ASTCubM2Mcj4yqAlI7O8JDHsWPV9i8GYXLIeUUlsk0IcB4IPuS",
-    "createdAt": "2020-01-01T00:00:00.078Z",
-    "__v": 0
+  "_id": "5e0428b26505de2a0a488d61",
+  "first_name": "Test",
+  "last_name": "Account",
+  "email": "test_account@example.com",
+  "password": "$2b$14$QV3ASTCubM2Mcj4yqAlI7O8JDHsWPV9i8GYXLIeUUlsk0IcB4IPuS",
+  "createdAt": "2020-01-01T00:00:00.078Z",
+  "__v": 0
+}
+```
+
+---
+
+##### Login:
+
+`POST /api/auth/login`
+
+`Example JSON request body`
+
+```json
+{
+  "email": "test_account@example.com",
+  "password": "test1234"
+}
+```
+
+`Example response`
+
+```json
+{
+  "loggedIn": true,
+  "token": "Bearer TOKEN"
+}
+```
+
+---
+
+> **NOTE:** The following routes all require the `Authorization` header to be set to the Bearer token received from when the user logged in.
+
+---
+
+##### Get Current User:
+
+`Authorization header required!`
+
+`GET /api/auth/me`
+
+`No request body required.`
+
+`Example response`
+
+```json
+{
+  "id": "5e0428b26505de2a0a488d61",
+  "first_name": "Test",
+  "last_name": "Account",
+  "email": "test_account@example.com",
+  "createdAt": "2020-01-01T00:00:00.078Z"
+}
+```
+
+---
+
+##### Edit Account:
+
+`Authorization header required!`
+
+`PUT /api/auth/edit`
+
+`Example JSON request body`
+
+```json
+{
+  "first_name": "Edited",
+  "last_name": "Account",
+  "email": "edited_account@example.com",
+  "password": "12345test",
+  "confirm_password": "12345test"
+}
+```
+
+`Example response`
+
+```json
+{
+  "_id": "5e0428b26505de2a0a488d61",
+  "first_name": "Edited",
+  "last_name": "Account",
+  "email": "edited_account@example.com",
+  "password": "$2b$14$QV3AST45lNBFjlgFDSGdsfgjI7O8JFASFGloN459asXc",
+  "createdAt": "2020-01-01T00:00:00.078Z",
+  "__v": 0
+}
+```
+
+---
+
+##### Delete Account:
+
+`Authorization header required!`
+
+`DELETE /api/auth/delete`
+
+`No request body required.`
+
+`Example response`
+
+```json
+{
+  "deleted": true,
+  "timestamp": 1577582955245
 }
 ```
 
