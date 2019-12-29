@@ -16,31 +16,35 @@ body {
     -webkit-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
-    .docs_nav_link_group {
-      margin: 10px;
-    }
     &,
     &_list {
       display: flex;
       flex-direction: column;
     }
     &_list {
+      margin: 0;
+      padding: 0.5em;
       list-style-type: none;
-      padding: 0 1em;
-      li {
-        margin: none;
-        a {
-          cursor: pointer;
-          color: white;
-          transition: $transition;
-          text-decoration-color: transparent;
-          font-size: 20px;
-          &:hover,
-          &:focus {
-            outline: none;
-            color: $blue;
-            border-bottom-color: $blue;
-            text-decoration-color: $blue;
+      .docs_nav_link_group {
+        margin: 10px;
+        .sub_link {
+          text-indent: 8px;
+        }
+        li {
+          margin: none;
+          a {
+            cursor: pointer;
+            color: white;
+            transition: $transition;
+            text-decoration-color: transparent;
+            font-size: 20px;
+            &:hover,
+            &:focus {
+              outline: none;
+              color: $blue;
+              border-bottom-color: $blue;
+              text-decoration-color: $blue;
+            }
           }
         }
       }

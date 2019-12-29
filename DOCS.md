@@ -1,10 +1,10 @@
-# Documentation:
+# Documentation
 
 ---
 
 ### Getting Started:
 
-##### About:
+##### About
 
 This boilerplate has been made to speed up the early stage of the development process, like setting up a basic server and wiring up all the common packages necessary for API/full-stack web application development.
 
@@ -12,7 +12,7 @@ Design pattern wise, this boilerplate had MVC in mind.
 
 It's written to be used with [TypeScript](https://www.typescriptlang.org/) and [Express](https://expressjs.com/). The database solution used here is [MongoDB](https://www.mongodb.com/), which uses [Mongoose](https://mongoosejs.com/) as it's layer of communication. This can, however, easily be changed.
 
-##### Usage:
+##### Usage
 
 1. Clone this repository to your project directory.
 2. Run `npm install`.
@@ -21,7 +21,7 @@ It's written to be used with [TypeScript](https://www.typescriptlang.org/) and [
 
 ---
 
-### Scripts:
+### Scripts
 
 - `npm run compile` - Compiles the TypeScript code into plain JavaScript.
 - `npm start` - Runs the compile script and starts the Node server.
@@ -34,7 +34,7 @@ It's written to be used with [TypeScript](https://www.typescriptlang.org/) and [
 
 ---
 
-### Configuration:
+### Configuration
 
 For the application to run properly, in a local environment, an `.env` file is required, which should be created in the root directory of the file structure.
 
@@ -127,7 +127,7 @@ DB_CONNECTION=
     └── root.hbs
 ```
 
-##### Directories:
+##### Directories
 
 - `dist` - This is where all the compiled JavaScript goes. Generated upon running `npm start`.
 - `logs` - Location of the `access.log` file. Keeps track of all attempts to access the API. This is generated once the server starts processing requests.
@@ -151,7 +151,7 @@ DB_CONNECTION=
 - `src/helpers` - Helper functions for keeping the codebase as DRY as possible.
 - `src/utils` - Utilitarian functions go here. They might not be entirely necessary for the app to work.
 
-##### Files:
+##### Files
 
 - `.env` - Your environmental variables should be kept in this file.
 - `example.env` - Example file for creating your own `.env` file.
@@ -163,7 +163,7 @@ DB_CONNECTION=
 
 ---
 
-### Authentication Strategy:
+### Authentication Strategy
 
 This boilerplate utilizes [Passport.js](http://www.passportjs.org/) for authentication.
 Once a user logs in, a bearer token will be returned to him, which is to be used for accessing protected endpoints.
@@ -172,7 +172,7 @@ The token is set to expire in an hour after logging in.
 
 ---
 
-### Requests:
+### Router
 
 [Postman Collection](https://www.getpostman.com/collections/ca5c894df425fdc08302)
 
@@ -247,7 +247,9 @@ export default (app: Application): void => {
 };
 ```
 
-##### Authentication Controller:
+---
+
+### Authentication Controller:
 
 There are 5 requests available from the authentication controller:
 
@@ -257,7 +259,7 @@ There are 5 requests available from the authentication controller:
 4. [Edit Account](#editaccount)
 5. [Delete Account](#deleteaccount)
 
-##### Register:
+##### Register
 
 `POST /api/auth/register`
 
@@ -289,7 +291,7 @@ There are 5 requests available from the authentication controller:
 
 ---
 
-##### Login:
+##### Login
 
 `POST /api/auth/login`
 
@@ -317,7 +319,7 @@ There are 5 requests available from the authentication controller:
 
 ---
 
-##### Get Current User:
+##### Get Current User
 
 `Authorization header required!`
 
@@ -339,7 +341,7 @@ There are 5 requests available from the authentication controller:
 
 ---
 
-##### Edit Account:
+##### Edit Account
 
 `Authorization header required!`
 
@@ -373,7 +375,7 @@ There are 5 requests available from the authentication controller:
 
 ---
 
-##### Delete Account:
+##### Delete Account
 
 `Authorization header required!`
 
@@ -392,7 +394,7 @@ There are 5 requests available from the authentication controller:
 
 ---
 
-### Testing:
+### Testing
 
 A test suite has been provided which runs a set of unit tests, checking the Authentication controller.
 Additional tests can be added in the `src/tests` directory.

@@ -1,6 +1,7 @@
 const navbar = document.getElementById("docs_nav_list");
 const links = document.getElementsByClassName("docs_nav_link");
-const headers = document.querySelectorAll("h3,h5");
+const headers = Array.from(document.querySelectorAll("h3,h5"));
+const codeBlocks = Array.from(document.getElementsByTagName("code"));
 let navCounter = 1; // The counter starts at '1' so it can skip the 'Go Back' link
 
 // Remove the HTML entities from the Markdown generated code blocks
@@ -12,9 +13,11 @@ function checkForTabEntities(elem) {
 
 // Generate link markup
 function linkMarkupGenerator({ id, innerText: text, tagName }, i = false) {
-  return `<li><a class="docs_nav_link" href="#${id}"> ${
+  return `<li class="${
+    tagName === "H3" ? "main_link" : "sub_link"
+  }"><a class="docs_nav_link" href="#${id}"> ${
     tagName === "H5" && i ? `${i}.` : ""
-  } ${text.replace(":", "")}</a></li>`;
+  } ${text}</a></li>`;
 }
 
 // Render link groups
@@ -27,8 +30,7 @@ function renderLinkGroup(links) {
 
 // Generate link groups
 function groupLinks(start) {
-  const arr = Array.from(document.querySelectorAll("h3,h5"));
-  const group = arr.slice(start, arr.length);
+  const group = headers.slice(start, headers.length);
   // Add previous element to output array, since that is the H3
   const prev = group[0];
   let output = [linkMarkupGenerator(prev)];
@@ -66,8 +68,6 @@ function vimNavigation({ keyCode: key }) {
 
 window.onload = () => {
   this.addEventListener("keydown", vimNavigation);
-  Array.from(document.getElementsByTagName("code")).forEach(
-    checkForTabEntities
-  );
-  Array.from(document.querySelectorAll("h3,h5")).forEach(addLinkToNavbar);
+  codeBlocks.forEach(checkForTabEntities);
+  headers.forEach(addLinkToNavbar);
 };
