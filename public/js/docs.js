@@ -88,6 +88,8 @@ function revealAndCloseInfo() {
     if (key === 74 || key === 75) close(); // If navigation keys are pressed, close the hint box
     if (key === 191) reveal(); // If the slash key's been pressed, reveal the hint box
   });
+  // Close the hint box once the user scrolls
+  window.addEventListener("scroll", close);
 }
 
 window.onload = () => {
