@@ -11,11 +11,9 @@ function checkForTabEntities(elem) {
 }
 
 // Generate link markup
-function linkMarkupGenerator({ id, innerText: text, tagName }) {
-  return `<li ${
-    tagName === "H5" ? `style="margin: 0"` : false
-  }><a class="docs_nav_link" href="#${id}"> ${
-    tagName === "H5" ? ">" : ""
+function linkMarkupGenerator({ id, innerText: text, tagName }, i = false) {
+  return `<li><a class="docs_nav_link" href="#${id}"> ${
+    tagName === "H5" && i ? `${i}.` : ""
   } ${text.replace(":", "")}</a></li>`;
 }
 
@@ -37,7 +35,7 @@ function groupLinks(start) {
   for (let i = 1; i < group.length; i++) {
     const current = group[i];
     if (current.tagName === "H3") break;
-    output.push(linkMarkupGenerator(current));
+    output.push(linkMarkupGenerator(current, i));
   }
   renderLinkGroup(output);
 }
