@@ -9,7 +9,8 @@
     "compile": "tsc",
     "start": "npm run scss && npm run compile && node .",
     "dev": "npm run scss && ts-node-dev src/bin/start.ts",
-    "test": "npm run compile && mocha dist/tests/*.test.js"
+    "test": "npm run compile && mocha dist/tests/*.test.js",
+    "start:process": "pm2 start ."
   },
   "repository": {
     "type": "git",
@@ -64,6 +65,7 @@
     "chai": "^4.2.0",
     "mocha": "^6.2.2",
     "node-sass": "^4.13.0",
+    "pm2": "^4.2.1",
     "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4"
