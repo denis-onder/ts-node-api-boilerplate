@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 // Load environmental variables located in the .env file
 dotenv.config();
 
-const { server, db } = {
+const { server, db, google } = {
   server: {
     port: parseInt(process.env.PORT) || 5000,
     env: process.env.NODE_ENV || "development",
@@ -11,7 +11,12 @@ const { server, db } = {
   },
   db: {
     connection: process.env.DB_CONNECTION
+  },
+  google: {
+    clientID: process.env.GOOGLE_OAUTH_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+    callbackURL: "/auth/google/callback"
   }
 };
 
-export { server, db };
+export { server, db, google };

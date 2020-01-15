@@ -1,8 +1,9 @@
 import { Application } from "express";
 import passport from "passport";
-import strategy from "./strategy";
+import jwtStrategy from "./strategies/jwt";
+import googleStrategy from "./strategies/google";
 
 export default (app: Application): void => {
   app.use(passport.initialize());
-  passport.use(strategy);
+  [jwtStrategy, googleStrategy].forEach(passport.use);
 };
