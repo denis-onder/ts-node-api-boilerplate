@@ -5,5 +5,6 @@ import googleStrategy from "./strategies/google";
 
 export default (app: Application): void => {
   app.use(passport.initialize());
-  [jwtStrategy, googleStrategy].forEach(passport.use);
+  // app.use(passport.session());
+  [jwtStrategy, googleStrategy].forEach(s => passport.use(s));
 };

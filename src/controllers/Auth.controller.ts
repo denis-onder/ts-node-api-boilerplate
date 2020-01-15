@@ -86,6 +86,21 @@ class AuthController {
     await User.findByIdAndDelete(id);
     return res.status(200).json({ deleted: true, timestamp: Date.now() });
   }
+  public generateJWTfromOAuth(req: SuperRequest, res: Response) {
+    const { id, email, first_name, last_name, createdAt } = req.user;
+    const payload = {
+      id,
+      email,
+      first_name,
+      last_name,
+      createdAt
+    };
+    const token = generateToken(payload);
+    return res.status(200).json({
+      loggedIn: true,
+      token
+    });
+  }
 }
 
 export default new AuthController();

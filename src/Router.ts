@@ -40,6 +40,25 @@ class Router {
       passport.authenticate("jwt", { session: false }),
       AuthController.delete
     );
+    // OAuth routes
+    this.API_ROUTER.get(
+      "/oauth",
+      passport.authenticate("google", {
+        session: false,
+        scope: [
+          "https://www.googleapis.com/auth/userinfo.profile",
+          "https://www.googleapis.com/auth/userinfo.email"
+        ]
+      })
+    );
+    this.API_ROUTER.get(
+      "/oauth/redirect",
+      passport.authenticate("google", {
+        session: false,
+        failureRedirect: "/login"
+      }),
+      AuthController.generateJWTfromOAuth
+    );
   }
   private setViewEndpoints(): void {
     // Your view endpoints can be declared here

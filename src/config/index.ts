@@ -15,7 +15,7 @@ const { server, db, google } = {
   google: {
     clientID: process.env.GOOGLE_OAUTH_CLIENT_ID,
     clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
-    callbackURL: "/auth/google/callback"
+    callbackURL: "/api/oauth/redirect"
   }
 };
 

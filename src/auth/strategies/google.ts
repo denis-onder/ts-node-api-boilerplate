@@ -14,7 +14,7 @@ export default new OAuth2Strategy(google, async (_, __, profile, done) => {
     if (emailInUse)
       throw new CustomException(403, "This email addresss is in use.");
     // Create a new user
-    registerOAuthUser(email, profile.id, (err, account) => {
+    registerOAuthUser(email, profile.name, profile.id, (err, account) => {
       if (err) return done(err, false);
       return done(null, account);
     });

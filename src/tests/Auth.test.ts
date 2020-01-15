@@ -42,6 +42,7 @@ describe("Example test", () => {
         "email",
         "password",
         "createdAt",
+        "clientID",
         "__v"
       );
     });
@@ -79,6 +80,7 @@ describe("Example test", () => {
         "last_name",
         "email",
         "password",
+        "clientID",
         "createdAt",
         "__v"
       );
