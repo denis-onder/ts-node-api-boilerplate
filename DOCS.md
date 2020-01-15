@@ -46,11 +46,15 @@ An example file has been provided within the repository.
 PORT=
 NODE_ENV=
 DB_CONNECTION=
+GOOGLE_OAUTH_CLIENT_ID=
+GOOGLE_OAUTH_CLIENT_SECRET=
 ```
 
 - `PORT` - Server port
 - `NODE_ENV` - Node environment
 - `DB_CONNECTION` - Database connection URL
+- `GOOGLE_OAUTH_CLIENT_ID` - Google OAuth client ID
+- `GOOGLE_OAUTH_CLIENT_SECRET` - Google OAuth client secret
 
 ---
 
@@ -86,7 +90,9 @@ DB_CONNECTION=
 ├── src
 │   ├── auth
 │   │   ├── index.ts
-│   │   └── strategy.ts
+│   │   └── strategies
+│   │       ├── google.ts
+│   │       └── jwt.ts
 │   ├── bin
 │   │   ├── start.ts
 │   │   └── stop.ts
@@ -159,6 +165,7 @@ DB_CONNECTION=
 - `src/middleware` - Server and Express middleware files are stored here.
 - `src/tests` - Test suites are located here.
 - `src/auth` - Authorization system files. Contains a Passport strategy incorporating JSON Web Tokens for authorization.
+- `src/auth/strategies` - Passport authentication strategies.
 - `src/validation` - Input validation related code goes here.
 - `src/helpers` - Helper functions for keeping the codebase as DRY as possible.
 - `src/utils` - Utilitarian functions go here. They might not be entirely necessary for the app to work.
