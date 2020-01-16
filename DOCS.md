@@ -314,6 +314,25 @@ class Router {
       passport.authenticate("jwt", { session: false }),
       AuthController.delete
     );
+    // OAuth routes
+    this.API_ROUTER.get(
+      "/oauth",
+      passport.authenticate("google", {
+        session: false,
+        scope: [
+          "https://www.googleapis.com/auth/userinfo.profile",
+          "https://www.googleapis.com/auth/userinfo.email"
+        ]
+      })
+    );
+    this.API_ROUTER.get(
+      "/oauth/redirect",
+      passport.authenticate("google", {
+        session: false,
+        failureRedirect: "/login"
+      }),
+      AuthController.generateJWTfromOAuth
+    );
   }
   private setViewEndpoints(): void {
     // Your view endpoints can be declared here
@@ -373,6 +392,7 @@ There are 5 requests available from the authentication controller:
 
 ```json
 {
+  "clientID": "f054e114-b0c8-4a68-b9f0-058c41157513",
   "_id": "5e0428b26505de2a0a488d61",
   "first_name": "Test",
   "last_name": "Account",
@@ -403,7 +423,7 @@ There are 5 requests available from the authentication controller:
 ```json
 {
   "loggedIn": true,
-  "token": "Bearer TOKEN"
+  "token": "Bearer <TOKEN>"
 }
 ```
 
@@ -457,6 +477,7 @@ There are 5 requests available from the authentication controller:
 
 ```json
 {
+  "clientID": "f054e114-b0c8-4a68-b9f0-058c41157513",
   "_id": "5e0428b26505de2a0a488d61",
   "first_name": "Edited",
   "last_name": "Account",
