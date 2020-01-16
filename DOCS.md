@@ -21,16 +21,23 @@ It's written to be used with [TypeScript](https://www.typescriptlang.org/) and [
 
 ---
 
-### Scripts
+### Scripts:
 
 - `npm run compile` - Compiles the TypeScript code into plain JavaScript.
 - `npm start` - Runs the compile script and starts the Node server.
+- `npm run start:process` - Starts the app as a system process using PM2.
 - `npm run dev` - Runs the Node server from the uncompiled source code.
 - `npm test` - Runs the test suite.
 - `npm run scss` - Compiles the SCSS code to CSS.
 - `npm run scss:watch` - Runs the SCSS compiler in watch mode.
 - `scripts/build.sh` - Removes old and builds a new Docker image.
 - `scripts/start.sh` - Runs the Docker image.
+
+##### Hooks
+
+- `prestart` - Compiles the TypeScript and SCSS before starting the application.
+- `pretest` - Runs the application as a system process using the `npm run start:process` script before running the test suite.
+- `posttest` - Kills the process after the tests have been ran.
 
 ---
 
