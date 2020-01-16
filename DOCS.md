@@ -266,6 +266,63 @@ this.API_ROUTER.get(
 
 ---
 
+### Models:
+
+For interacting with the database, Mongoose is used to generate models.
+
+The way generation is approached, the model name and schema are provided to a generator function.
+
+`src/db/models/model.generator.ts`
+
+```js
+import { model } from "mongoose";
+
+export default (name, schema) => model(name, schema);
+```
+
+##### User
+
+`src/db/models/User.model.ts`
+
+```js
+import { Schema } from "mongoose";
+import uuid from "uuid";
+import generator from "./model.generator";
+
+const schema = new Schema({
+  first_name: {
+    type: String,
+    required: true
+  },
+  last_name: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  clientID: {
+    type: String,
+    unique: true,
+    default: uuid.v4()
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+export default generator("user", schema);
+```
+
+---
+
 ### Router
 
 [Postman Collection](https://www.getpostman.com/collections/ca5c894df425fdc08302)
