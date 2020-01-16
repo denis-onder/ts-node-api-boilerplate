@@ -117,6 +117,7 @@ GOOGLE_OAUTH_CLIENT_SECRET=
 │   │   ├── CustomException.ts
 │   │   ├── generateToken.ts
 │   │   ├── hashPassword.ts
+│   │   ├── registerOAuthUser.ts
 │   │   └── isEmpty.ts
 │   ├── interfaces.ts
 │   ├── middleware
