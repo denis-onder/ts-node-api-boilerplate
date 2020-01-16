@@ -10,7 +10,12 @@ const { server, db, google } = {
     secret: process.env.SECRET
   },
   db: {
-    connection: process.env.DB_CONNECTION
+    connection: process.env.DB_CONNECTION,
+    config: {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true
+    }
   },
   google: {
     clientID: process.env.GOOGLE_OAUTH_CLIENT_ID,

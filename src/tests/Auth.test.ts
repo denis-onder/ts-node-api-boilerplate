@@ -1,17 +1,6 @@
 import { expect } from "chai";
 import apiTester from "../utils/apiTester";
 
-// Rules for automating server startup
-// import server from "../Server";
-
-// before(() => server.start());
-
-// afterEach(() => {
-//   if (this.currentTest.state === "failed") server.stop("Test suite failed.");
-// });
-
-// after(() => server.stop());
-
 // Token placeholder
 let token;
 
