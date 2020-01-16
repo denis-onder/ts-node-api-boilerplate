@@ -182,12 +182,34 @@ GOOGLE_OAUTH_CLIENT_SECRET=
 
 ---
 
-### Authentication Strategy
+### Authentication Strategies:
 
 This boilerplate utilizes [Passport.js](http://www.passportjs.org/) for authentication.
 Once a user logs in, a bearer token will be returned to him, which is to be used for accessing protected endpoints.
 
 The token is set to expire in an hour after logging in.
+
+By personal choice, sessions have been disabled in favor of using the token expiration time as a way to mimic sessions. This can, however, easily be changed by calling the `session` method from the `Passport` object.
+
+Be noted that serialization and deserialization of users has to be added by hand.
+
+##### JWT
+
+JSON Web Tokens are the primary means of authorization. Requests which are to be protected use the token for the means of checking if they are valid, and if so, if the user is allowed to reach the said endpoint.
+
+As noted above this sub-section, tokens expire an hour after creation. If you'd like to change the token expiration time, you can do so by changing the `expiresIn` object property in `src/helpers/generateToken.ts`.
+
+```js
+import jwt from "jsonwebtoken";
+import { server } from "../config";
+
+export default payload => {
+  const token = jwt.sign(payload, server.secret, {
+    expiresIn: "1h" // Token expiration time.
+  });
+  return `Bearer ${token}`;
+};
+```
 
 ---
 
