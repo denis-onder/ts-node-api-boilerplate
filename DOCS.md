@@ -211,6 +211,51 @@ export default payload => {
 };
 ```
 
+##### Google OAuth
+
+This boilerplate also includes the Passport strategy and related code necessary for allowing users to create an account and log in using their Google account.
+
+You need to create a project on the [Google API Console](https://console.developers.google.com/getting-started), and generate OAuth credentials, which are required for enabling this feature. The credentials consist of a client ID and a client secret.
+
+The credentials that have been noted in the paragraph above should be placed in your `.env` file.
+
+```
+GOOGLE_OAUTH_CLIENT_ID=YOUR_CLIENT_ID
+GOOGLE_OAUTH_CLIENT_SECRET=YOUR_CLIENT_SECRET
+```
+
+If you are stuck getting Google OAuth to work, [here's a good Scotch.io article](https://scotch.io/tutorials/easy-node-authentication-google) on the subject.
+
+A callback URL is also required for the OAuth service to route through. This URL has to be provided in the Google API Console. Currently, the default callback URL, locally, is set to `http://localhost:<YOUR_PORT>/api/oauth/redirect`. You can change this in the `src/Router.ts` file, if you so desire.
+
+Make sure that you do provide the URL in the console, otherwise the authentication process will fail.
+
+The default endpoint for logging in using Google OAuth is `http://localhost:<YOUR_PORT>/api/oauth`. This can also be changed if you want.
+
+`src/Router.ts`
+
+```js
+// OAuth routes
+this.API_ROUTER.get(
+  "/oauth",
+  passport.authenticate("google", {
+    session: false,
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
+this.API_ROUTER.get(
+  "/oauth/redirect",
+  passport.authenticate("google", {
+    session: false,
+    failureRedirect: "/login"
+  }),
+  AuthController.generateJWTfromOAuth
+);
+```
+
 ---
 
 ### Router
