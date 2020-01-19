@@ -41,15 +41,9 @@ class AuthController {
       if (!user) throw new CustomException(404, "This email is not in use.");
       // Check if the provided password is valid
       const match = compareSync(password, user.password);
-      if (!match) throw new CustomException(401, "Invalid password.");
+      if (!match) throw new CustomException(422, "Invalid password.");
       // Generate token
-      const token = generateToken({
-        id: user._id,
-        email: user.email,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        createdAt: user.createdAt
-      });
+      const token = generateToken(user);
       // Return the generated token
       return res.status(200).json({ loggedIn: true, token });
     } catch (err) {
@@ -68,8 +62,7 @@ class AuthController {
   }
   public async edit(req: SuperRequest, res: Response) {
     try {
-      const { id } = req.user;
-      const user: UserInterface = await User.findById(id);
+      const user: UserInterface = await User.findById(req.user.id);
       if (!user) throw new CustomException(404, "User not found.");
       const { first_name, last_name, email, password } = req.body;
       // Edit user
@@ -85,20 +78,11 @@ class AuthController {
     }
   }
   public async delete(req: SuperRequest, res: Response) {
-    const { id } = req.user;
-    await User.findByIdAndDelete(id);
+    await User.findByIdAndDelete(req.user.id);
     return res.status(200).json({ deleted: true, timestamp: Date.now() });
   }
   public generateJWTfromOAuth(req: SuperRequest, res: Response) {
-    const { id, email, first_name, last_name, createdAt } = req.user;
-    const payload = {
-      id,
-      email,
-      first_name,
-      last_name,
-      createdAt
-    };
-    const token = generateToken(payload);
+    const token = generateToken(req.user);
     return res.status(200).json({
       loggedIn: true,
       token
