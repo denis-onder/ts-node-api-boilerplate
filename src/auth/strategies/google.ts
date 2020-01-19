@@ -1,21 +1,21 @@
 import { OAuth2Strategy } from "passport-google-oauth";
 import { google } from "../../config";
 import User from "../../db/models/User.model";
-import registerOAuthUser from "../../helpers/registerOAuthUser";
+import registerUser from "../../helpers/registerUser";
 import CustomException from "../../helpers/CustomException";
 
 export default new OAuth2Strategy(google, async (_, __, profile, done) => {
+  const { id: clientID } = profile;
+  const { value: email } = profile.emails[0];
   try {
     // Check if the user exists
-    const user = await User.findOne({ clientID: profile.id });
+    const user = await User.findOne({ clientID });
     if (user) return done(null, user);
-    const { value: email } = profile.emails[0];
-    const emailInUse = await User.findOne({ email });
-    if (emailInUse)
-      throw new CustomException(403, "This email addresss is in use.");
     // Create a new user
-    registerOAuthUser(email, profile.name, profile.id, (err, account) => {
-      if (err) return done(err, false);
+    registerUser(email, profile.name, false, clientID, (err, account) => {
+      if (err) {
+        throw new CustomException(500, err);
+      }
       return done(null, account);
     });
   } catch (error) {

@@ -2,16 +2,19 @@ import { randomBytes } from "crypto";
 import User from "../db/models/User.model";
 import hashPassword from "./hashPassword";
 
-export default async (email, name, clientID, callback) => {
-  const password = randomBytes(32).toString("hex");
+export default async (email, name, password, clientID, callback) => {
   try {
-    const credentials = {
+    let credentials: any = {
       email,
-      password: hashPassword(password),
       clientID,
       first_name: name.givenName,
       last_name: name.familyName
     };
+    // OAuth fallbacks
+    credentials.password = hashPassword(
+      password ? password : randomBytes(32).toString("hex")
+    );
+    if (clientID) credentials.clientID = clientID;
     const newUser = await User.create(credentials);
     callback(null, newUser);
   } catch (error) {

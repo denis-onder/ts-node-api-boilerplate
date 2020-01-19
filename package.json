@@ -47,8 +47,7 @@
     "passport-jwt": "^4.0.0",
     "pg": "^7.17.1",
     "pg-hstore": "^2.3.3",
-    "showdown": "^1.9.1",
-    "uuid": "^3.3.3"
+    "showdown": "^1.9.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",

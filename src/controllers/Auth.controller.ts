@@ -5,6 +5,7 @@ import User from "../db/models/User.model";
 import CustomException from "../helpers/CustomException";
 import hashPassword from "../helpers/hashPassword";
 import generateToken from "../helpers/generateToken";
+import registerUser from "../helpers/registerUser";
 
 class AuthController {
   public async register(req: Request, res: Response) {
@@ -13,20 +14,22 @@ class AuthController {
       const user: UserInterface = await User.findOne({ email });
       if (user) throw new CustomException(403, "This email is already in use.");
       // Create user
-      const new_user = new User({
-        first_name,
-        last_name,
+      registerUser(
         email,
-        password: hashPassword(password)
-      });
-      await new_user.save();
-      return res.status(200).json(new_user);
+        { givenName: first_name, familyName: last_name },
+        password,
+        false,
+        (err, user) => {
+          if (err) throw new CustomException(500, err);
+          return res.status(200).json(user);
+        }
+      );
     } catch (err) {
       /**
        * Concept:
        * If we throw a custom exception, use the provided info from it.
        * Otherwise just resolve into a 500 HTTP code,
-       * and return whatever error gets passed into  the block.
+       * and return whatever error gets passed into the block.
        */
       return res.status(err.status || 500).json(err.message || err);
     }
