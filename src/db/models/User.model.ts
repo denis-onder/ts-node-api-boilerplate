@@ -1,5 +1,4 @@
 import { Schema } from "mongoose";
-import uuid from "uuid";
 import generator from "./model.generator";
 
 const schema = new Schema({
@@ -22,8 +21,7 @@ const schema = new Schema({
   },
   clientID: {
     type: String,
-    unique: true,
-    default: uuid.v4()
+    required: false
   },
   createdAt: {
     type: Date,
