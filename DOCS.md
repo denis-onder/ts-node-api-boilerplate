@@ -117,7 +117,7 @@ GOOGLE_OAUTH_CLIENT_SECRET=
 │   │   ├── CustomException.ts
 │   │   ├── generateToken.ts
 │   │   ├── hashPassword.ts
-│   │   ├── registerOAuthUser.ts
+│   │   ├── registerUser.ts
 │   │   └── isEmpty.ts
 │   ├── interfaces.ts
 │   ├── middleware
@@ -309,8 +309,7 @@ const schema = new Schema({
   },
   clientID: {
     type: String,
-    unique: true,
-    default: uuid.v4()
+    required: false
   },
   createdAt: {
     type: Date,
