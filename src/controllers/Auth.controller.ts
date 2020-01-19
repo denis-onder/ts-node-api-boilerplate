@@ -41,7 +41,7 @@ class AuthController {
       if (!user) throw new CustomException(404, "This email is not in use.");
       // Check if the provided password is valid
       const match = compareSync(password, user.password);
-      if (!match) throw new CustomException(403, "Invalid password.");
+      if (!match) throw new CustomException(401, "Invalid password.");
       // Generate token
       const token = generateToken({
         id: user._id,
