@@ -1,3 +1,1 @@
-console.log(
-  "(╯°□°）╯︵ ┻━┻\nNothing to see here: Go to http://localhost:5000/docs"
-);
+console.log(`(╯°□°）╯︵ ┻━┻\nNothing to see here.\nGo to ${location.href}docs`);
