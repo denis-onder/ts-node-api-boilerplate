@@ -15,7 +15,7 @@ export interface RegistrationValidationError extends LoginValidationError {
   passwordsNotMatching?: String;
 }
 
-export interface UserInterface extends Document {
+export interface IUser extends Document {
   id?: string;
   email?: string;
   password?: string;
@@ -25,5 +25,5 @@ export interface UserInterface extends Document {
 }
 
 export interface SuperRequest extends Request {
-  user?: UserInterface;
+  user?: IUser;
 }

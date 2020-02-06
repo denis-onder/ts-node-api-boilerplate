@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserInterface, SuperRequest } from "../interfaces";
+import { IUser, SuperRequest } from "../interfaces";
 import { compareSync } from "bcrypt";
 import User from "../db/models/User.model";
 import CustomException from "../helpers/CustomException";
@@ -11,7 +11,7 @@ class AuthController {
   public async register(req: Request, res: Response) {
     try {
       const { first_name, last_name, email, password } = req.body;
-      const user: UserInterface = await User.findOne({ email });
+      const user: IUser = await User.findOne({ email });
       if (user) throw new CustomException(403, "This email is already in use.");
       // Create user
       registerUser(
@@ -37,7 +37,7 @@ class AuthController {
   public async login(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
-      const user: UserInterface = await User.findOne({ email });
+      const user: IUser = await User.findOne({ email });
       if (!user) throw new CustomException(404, "This email is not in use.");
       // Check if the provided password is valid
       const match = compareSync(password, user.password);
@@ -62,7 +62,7 @@ class AuthController {
   }
   public async edit(req: SuperRequest, res: Response) {
     try {
-      const user: UserInterface = await User.findById(req.user.id);
+      const user: IUser = await User.findById(req.user.id);
       if (!user) throw new CustomException(404, "User not found.");
       const { first_name, last_name, email, password } = req.body;
       // Edit user
