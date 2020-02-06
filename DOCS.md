@@ -10,7 +10,7 @@ This boilerplate has been made to speed up the early stage of the development pr
 
 Design pattern wise, this boilerplate had MVC in mind.
 
-It's written to be used with [TypeScript](https://www.typescriptlang.org/) and [Express](https://expressjs.com/). The database solution used here is [MongoDB](https://www.mongodb.com/), which uses [Mongoose](https://mongoosejs.com/) as it's layer of communication. This can, however, easily be changed.
+It's written to be used with [TypeScript](https://www.typescriptlang.org/) and [Express](https://expressjs.com/). The database solution used here is [MongoDB](https://www.mongodb.com/) in combination with [Mongoose](https://mongoosejs.com/). This can easily be changed to whatever database solution you want.
 
 ##### Usage
 
@@ -448,7 +448,6 @@ There are 5 requests available from the authentication controller:
 
 ```json
 {
-  "clientID": "f054e114-b0c8-4a68-b9f0-058c41157513",
   "_id": "5e0428b26505de2a0a488d61",
   "first_name": "Test",
   "last_name": "Account",
@@ -533,7 +532,6 @@ There are 5 requests available from the authentication controller:
 
 ```json
 {
-  "clientID": "f054e114-b0c8-4a68-b9f0-058c41157513",
   "_id": "5e0428b26505de2a0a488d61",
   "first_name": "Edited",
   "last_name": "Account",
