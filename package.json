@@ -45,8 +45,6 @@
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "passport-jwt": "^4.0.0",
-    "pg": "^7.17.1",
-    "pg-hstore": "^2.3.3",
     "showdown": "^1.9.1"
   },
   "devDependencies": {
