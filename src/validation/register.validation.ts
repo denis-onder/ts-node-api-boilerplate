@@ -1,6 +1,6 @@
 import isEmpty from "../helpers/isEmpty";
 import emailRegex from "./emailRegex";
-import { RegistrationValidationError } from "../interfaces";
+import { IRegistrationValidationError } from "../interfaces";
 
 // Error messages
 import {
@@ -22,7 +22,7 @@ export default ({
   confirm_password
 }) => {
   // Define an error object
-  let errors: RegistrationValidationError = {};
+  let errors: IRegistrationValidationError = {};
   // First and last names
   if (isEmpty(first_name)) errors.firstNameEmpty = FIRST_NAME_EMPTY;
   if (isEmpty(last_name)) errors.lastNameEmpty = LAST_NAME_EMPTY;

@@ -1,13 +1,13 @@
 import { Request } from "express";
 import { Document } from "mongoose";
 
-export interface LoginValidationError {
+export interface ILoginValidationError {
   emailEmpty?: String;
   emailNotValid?: String;
   passwordEmpty?: String;
 }
 
-export interface RegistrationValidationError extends LoginValidationError {
+export interface IRegistrationValidationError extends ILoginValidationError {
   firstNameEmpty?: String;
   lastNameEmpty?: String;
   confirmPasswordEmpty?: String;
@@ -24,6 +24,6 @@ export interface IUser extends Document {
   createdAt?: string;
 }
 
-export interface SuperRequest extends Request {
+export interface IRequest extends Request {
   user?: IUser;
 }

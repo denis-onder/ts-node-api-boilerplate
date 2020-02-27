@@ -1,3 +1,3 @@
-import { model } from "mongoose";
+import { model, Schema } from "mongoose";
 
-export default (name, schema) => model(name, schema);
+export default (name: string, schema: Schema) => model(name, schema);

@@ -1,13 +1,13 @@
 import isEmpty from "../helpers/isEmpty";
 import emailRegex from "./emailRegex";
-import { LoginValidationError } from "../interfaces";
+import { ILoginValidationError } from "../interfaces";
 
 // Error messages
 import { EMAIL_EMPTY, EMAIL_INVALID, PASSWORD_EMPTY } from "./errors";
 
 export default ({ email, password }) => {
   // Define an error object
-  let errors: LoginValidationError = {};
+  let errors: ILoginValidationError = {};
   // Email
   if (isEmpty(email)) errors.emailEmpty = EMAIL_EMPTY;
   if (!emailRegex.test(email)) errors.emailNotValid = EMAIL_INVALID;

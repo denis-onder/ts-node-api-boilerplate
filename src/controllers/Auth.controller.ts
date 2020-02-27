@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IUser, SuperRequest } from "../interfaces";
+import { IUser, IRequest } from "../interfaces";
 import { compareSync } from "bcrypt";
 import User from "../db/models/User.model";
 import CustomException from "../helpers/CustomException";
@@ -50,7 +50,7 @@ class AuthController {
       return res.status(err.status || 500).json(err.message || err);
     }
   }
-  public getCurrentUser(req: SuperRequest, res: Response) {
+  public getCurrentUser(req: IRequest, res: Response) {
     const { id, email, first_name, last_name, createdAt } = req.user;
     return res.status(200).json({
       id,
@@ -60,7 +60,7 @@ class AuthController {
       createdAt
     });
   }
-  public async edit(req: SuperRequest, res: Response) {
+  public async edit(req: IRequest, res: Response) {
     try {
       const user: IUser = await User.findById(req.user.id);
       if (!user) throw new CustomException(404, "User not found.");
@@ -77,13 +77,13 @@ class AuthController {
       return res.status(err.status || 500).json(err.message || err);
     }
   }
-  public async delete(req: SuperRequest, res: Response) {
+  public async delete(req: IRequest, res: Response) {
     const user = await User.findById(req.user.id);
     if (!user) return res.status(404).json({ error: "User not found." });
     await user.remove();
     return res.status(200).json({ deleted: true, timestamp: Date.now() });
   }
-  public generateJWTfromOAuth(req: SuperRequest, res: Response) {
+  public generateJWTfromOAuth(req: IRequest, res: Response) {
     const token = generateToken(req.user);
     return res.status(200).json({
       loggedIn: true,
