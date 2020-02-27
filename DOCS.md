@@ -266,6 +266,64 @@ this.API_ROUTER.get(
 
 ---
 
+### Interfaces:
+
+Because this boilerplates has been written in TypeScript, using interfaces for the sake of static type checking allows for peace of mind during development.
+
+##### ILoginValidationError
+
+```js
+interface ILoginValidationError {
+  emailEmpty?: String;
+  emailNotValid?: String;
+  passwordEmpty?: String;
+}
+```
+
+This interface is used in the login form/request validation function, specifically for forming the error object returned from said function.
+
+##### IRegistrationValidationError
+
+```js
+interface IRegistrationValidationError extends ILoginValidationError {
+  firstNameEmpty?: String;
+  lastNameEmpty?: String;
+  confirmPasswordEmpty?: String;
+  passwordLength?: String;
+  passwordsNotMatching?: String;
+}
+```
+
+As the previous interface, this one serves the same purpose, except for the registration form/request validation function.
+
+##### IUser
+
+```js
+interface IUser extends Document {
+  id?: string;
+  email?: string;
+  password?: string;
+  first_name?: string;
+  last_name?: string;
+  createdAt?: string;
+}
+```
+
+This interface is used for validation and type checking new user objects upon registration.
+
+
+##### IRequest
+
+```js
+interface IRequest extends Request {
+  user?: IUser;
+}
+```
+
+To be able to type check the user object within the request object itself, which is created by Passport once a user logs in, this interface is required.
+
+---
+
 ### Models:
 
 For interacting with the database, Mongoose is used to generate models.
@@ -275,9 +333,9 @@ The way generation is approached, the model name and schema are provided to a ge
 `src/db/models/model.generator.ts`
 
 ```js
-import { model } from "mongoose";
+import { model, Schema } from "mongoose";
 
-export default (name, schema) => model(name, schema);
+export default (name: string, schema: Schema) => model(name, schema);
 ```
 
 ##### User
